@@ -214,6 +214,17 @@ class AzureOpenAIConfig(BaseConfig):
         litellm_params: dict,
         headers: dict,
     ) -> dict:
+        print("INSIDE TRANSFORM REQUEST again")
+        
+        # """
+        # Transform the request for Azure OpenAI.
+        
+        # Maps parameters appropriately for Azure compatibility.
+        # """
+        # # Handle max_completion_tokens mapping to max_tokens for Azure
+        # if "max_completion_tokens" in optional_params and "max_tokens" not in optional_params:
+        #     optional_params["max_tokens"] = optional_params.pop("max_completion_tokens")
+        
         messages = convert_to_azure_openai_messages(messages)
         return {
             "model": model,
